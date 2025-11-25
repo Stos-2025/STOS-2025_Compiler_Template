@@ -8,6 +8,7 @@ class CompilerEnvMock(NamedTuple):
     envs: Dict[str, str]
     bindings: Dict[str, str]
     run_command: List[str]
+    image_name: str
 
 
 def gen_env_paths(base_path: str) -> Dict[str, str]:

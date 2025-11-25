@@ -1,6 +1,6 @@
 import os
-import subprocess
 import pytest
+import subprocess
 import test_utils as utils
 
 # you can also use local path for debug: e.g.:
@@ -23,23 +23,24 @@ INVALID_SRC_PATH = os.path.join(ASSETS_PATH, "invalid_src")
 
 
 @pytest.fixture(scope="function")
-def mock_env(tmp_path: str) -> utils.CompilerEnvMock: 
+def mock_env(tmp_path: str, pytestconfig: pytest.Config) -> utils.CompilerEnvMock: 
     utils.init_mock_files(tmp_path, VALID_SRC_PATH)
     envs = utils.gen_env_paths("/data")
     bindings = utils.gen_bindings("/data", tmp_path)
-    run_command = utils.gen_run_command(envs, bindings, IMAGE_NAME)
-    return utils.CompilerEnvMock(tmp_path, envs, bindings, run_command)
+    image_name: str = str(pytestconfig.getoption("image_name") or IMAGE_NAME)
+    run_command = utils.gen_run_command(envs, bindings, image_name)
+    return utils.CompilerEnvMock(tmp_path, envs, bindings, run_command, image_name)
 
 
-def test_image_when_exists_should_be_found():
+def test_image_when_exists_should_be_found(mock_env: utils.CompilerEnvMock):
     result = subprocess.run(
-        ["docker", "images", "-q", IMAGE_NAME],
+        ["docker", "images", "-q", mock_env.image_name],
         capture_output=True,
         text=True,
         check=True,
     )
 
-    assert result.stdout.strip(), f"Docker image {IMAGE_NAME} does not exist"
+    assert result.stdout.strip(), f"Docker image {mock_env.image_name} does not exist"
 
 
 def test_container_when_started_should_run_successfully(mock_env: utils.CompilerEnvMock):
@@ -50,7 +51,7 @@ def test_container_when_started_should_run_successfully(mock_env: utils.Compiler
 def test_container_when_src_env_missing_should_fail(mock_env: utils.CompilerEnvMock):
     envs = mock_env.envs.copy()
     del envs["SRC"]
-    container_run_command = utils.gen_run_command(envs, mock_env.bindings, IMAGE_NAME)
+    container_run_command = utils.gen_run_command(envs, mock_env.bindings, mock_env.image_name)
     
     result = subprocess.run(container_run_command, check=False)
     assert result.returncode != 0, "Container should fail on start due to missing SRC environment variable"
