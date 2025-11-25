@@ -23,6 +23,7 @@ jobs:
 
       - name: Build container image
         run: docker build --pull -t "$IMAGE_NAME:$IMAGE_TAG" .
+        working-directory: comp_image_template
 
       - name: Archive Docker image
         run: docker save "$IMAGE_NAME:$IMAGE_TAG" | gzip > "$IMAGE_ARCHIVE"
