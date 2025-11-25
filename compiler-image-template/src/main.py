@@ -13,7 +13,6 @@ def compile() -> CompilerOutputSchema:
     info_file_path = compiler_envs.INF
 
     # todo =====================================================================
-    standard = "c++17"
     name_patterns = ["*.cpp", "*.cc", "*.cxx", "*.c++", "*.C", "*.CPP", "*.c"] # not a must have
     # * ========================================================================
 
@@ -40,7 +39,7 @@ def compile() -> CompilerOutputSchema:
         f"-fdiagnostics-color=always",
         "-I", lib_path,
         "-I", src_path,
-        f"-std={standard}",
+        "-std=c++17",
         "-o", compiled_program_path
     ] + all_src_files
     # * ========================================================================
