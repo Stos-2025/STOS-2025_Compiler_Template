@@ -36,7 +36,7 @@ def compile() -> CompilerOutputSchema:
         "-Wall", 
         "-Wextra", 
         "-Wpedantic",
-        f"-fdiagnostics-color=always",
+        "-fdiagnostics-color=always",
         "-I", lib_path,
         "-I", src_path,
         "-std=c++17",
