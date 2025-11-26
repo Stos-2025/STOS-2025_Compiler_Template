@@ -4,7 +4,7 @@
 - This implementation is only a suggestion; the only hard requirement is that the resulting container image satisfies the IO contract documented below.
 - The sample pipeline is built around `g++` (C++17 with `-Wall -Wextra -Wpedantic`) and demonstrates a full flow: read sources, run compilation, publish the binary, persist metadata/logs.
 - Recommended run steps:
-  1. Build the image: `docker build -t template_comp ./comp_image_template `
+  1. Build the image: `docker build -t template_comp ./template `
   2. Execute the contract tests: `pytest`
 - You can use the `--image-name` flag, e.g. `pytest --image-name template_comp`, to specify the Docker image, or define a default image name in the test code.
 - Areas intentionally left for customization are marked with `# todo`. Use a project-wide search for `# todo` to locate and adjust every placeholder.

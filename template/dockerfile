@@ -1,7 +1,7 @@
+# todo =========================================================================
 # recommended to use alpine or other minimal base image for smaller image size
 FROM alpine:3.21
 
-# todo =========================================================================
 # Labels (metadata)
 LABEL maintainer="<fullname> <email>"
 LABEL version="<1.0.0>"
@@ -31,7 +31,7 @@ USER stosuser
 ENTRYPOINT ["python3", "/app/src/main.py"]
 
 # Build command:
-# docker build -t template_comp comp_image_template/dockerfile
+# docker build -t template_comp ./template
 
 # Run command:
 # docker run --rm template_comp
