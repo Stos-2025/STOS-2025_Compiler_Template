@@ -26,8 +26,8 @@ def compile() -> CompilerOutputSchema:
         with open(compiler_envs.OUT, "w", encoding="utf-8") as out_file:
             out_file.write(result.model_dump_json())
         with open(info_file_path, "w", encoding="utf-8") as info_file:
-            info_file.write("No files found to compile.\n")    
-        logger.error("No files found to compile.")
+            info_file.write("No files found to compile\n")    
+        logger.error("No files found to compile")
         return result
     
     # todo =====================================================================
@@ -56,7 +56,7 @@ def compile() -> CompilerOutputSchema:
 
     if success:
         if not os.path.isfile(compiled_program_path):
-            logger.error("Compilation failed: binary was not created.")
+            logger.error("Compilation failed: binary was not created")
             success = False
     else:
         logger.error("Compilation failed with return code %d", return_code)
