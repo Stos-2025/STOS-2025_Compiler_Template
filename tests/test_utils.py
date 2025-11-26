@@ -36,6 +36,7 @@ def init_mock_files(mock_base_path: str, src_files_path: str) -> None:
     if os.path.exists(mock_base_path):
         import shutil
         shutil.rmtree(mock_base_path)
+    os.umask(0o000)
     os.makedirs(os.path.join(mock_base_path, "src"), exist_ok=True)
     os.makedirs(os.path.join(mock_base_path, "lib"), exist_ok=True)
     os.makedirs(os.path.join(mock_base_path, "out"), exist_ok=True)
