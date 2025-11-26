@@ -1,7 +1,7 @@
 import os
-import glob
 import subprocess
 import compiler_envs
+from glob import glob
 from typing import List
 from logger import logger
 from compiler_output_schema import CompilerOutputSchema
@@ -18,8 +18,8 @@ def compile() -> CompilerOutputSchema:
 
     all_src_files: List[str] = []
     for pattern in name_patterns:
-        all_src_files.extend(glob.glob(os.path.join(src_path, pattern)))
-        all_src_files.extend(glob.glob(os.path.join(lib_path, pattern)))
+        all_src_files.extend(glob(os.path.join(src_path, pattern)))
+        all_src_files.extend(glob(os.path.join(lib_path, pattern)))
 
     if not all_src_files:
         result = CompilerOutputSchema(success= False, return_code=1)
