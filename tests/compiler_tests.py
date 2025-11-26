@@ -5,10 +5,8 @@ import test_utils as utils
 
 # you can also use local path for debug: e.g.: os.path.join(os.path.dirname(os.path.realpath(__file__)), "mock")
 
-
 # use -s option to see print outputs
 # you can change IMAGE_NAME to your built image for debugging
-
 
 # utils.gen_env_paths(mock_env.base_path) generates the env paths using host paths visible to the host system
 # utils.gen_env_paths("/data") generates the env paths using inner container paths
