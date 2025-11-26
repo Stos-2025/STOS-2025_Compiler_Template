@@ -24,6 +24,7 @@ INVALID_SRC_PATH = os.path.join(ASSETS_PATH, "invalid_src")
 
 @pytest.fixture(scope="function")
 def mock_env(tmp_path: str, pytestconfig: pytest.Config) -> utils.CompilerEnvMock: 
+    os.chmod(tmp_path, 0o777)
     utils.init_mock_files(tmp_path, VALID_SRC_PATH)
     envs = utils.gen_env_paths("/data")
     bindings = utils.gen_bindings("/data", tmp_path)
