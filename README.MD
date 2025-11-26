@@ -6,8 +6,16 @@
 - Recommended run steps:
   1. Build the image: `docker build -t template_comp-1.0.0 .`
   2. Execute the contract tests: `pytest`
+- You can use the `--image-name` flag, e.g. `pytest --image-name d4m14n/stos_gpp_std17_comp`, to specify the Docker image, or define a default image name in the test code.
 - Areas intentionally left for customization are marked with `# todo`. Use a project-wide search for `# todo` to locate and adjust every placeholder.
 - The repo includes JSON validation (Pydantic), logging to `LOGS/compile.log`, structured error handling, and explicit environment requirements to make swapping `g++` for another toolchain straightforward.
+
+
+This repository includes GitHub Actions workflows (see `.github/workflows/`) that automate common tasks:
+- Build the container image used by the tests
+- Run the contract tests (`pytest`) against the built image
+- Optionally publish a container image to a registry (configured in the workflow)
+
 
 ---
 
