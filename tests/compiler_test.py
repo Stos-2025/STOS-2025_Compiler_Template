@@ -14,7 +14,7 @@ import test_utils as utils
 # utils.gen_env_paths("/data") generates the env paths using inner container paths
 
 # todo =========================================================================
-IMAGE_NAME = "template_comp-1.0.0"
+IMAGE_NAME = "template_comp"
 
 
 ASSETS_PATH = os.path.join(os.path.dirname(os.path.realpath(__file__)), "assets")

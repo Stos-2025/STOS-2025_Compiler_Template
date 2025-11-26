@@ -31,7 +31,7 @@ USER stosuser
 ENTRYPOINT ["python3", "/app/src/main.py"]
 
 # Build command:
-# docker build -t template_comp-1.0.0 .
+# docker build -t template_comp comp_image_template/dockerfile
 
 # Run command:
-# docker run --rm template_comp-1.0.0
+# docker run --rm template_comp
