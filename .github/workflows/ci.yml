@@ -11,10 +11,13 @@ on:
         required: false
         default: 'latest'
 
+
+# todo ========================================================================= 
 env:
-  IMAGE_NAME: d4m14n/stos_gpp_std17_comp
+  IMAGE_NAME: stos_gpp_std17_comp
   IMAGE_ARCHIVE: compiler-image.tar.gz
   IMAGE_TAG: ${{ github.event.inputs.image_tag || github.sha }}
+# * ============================================================================
 
 jobs:
   build:
