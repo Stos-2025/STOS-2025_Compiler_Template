@@ -67,7 +67,7 @@ jobs:
 
       - name: Run tests from tests/
         env:
-          IMAGE_UNDER_TEST: ${{ env.IMAGE_NAME }}:${{ github.sha }}
+          IMAGE_UNDER_TEST: ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
         run: pytest -s tests --image-name "$IMAGE_UNDER_TEST"
 
   publish:
