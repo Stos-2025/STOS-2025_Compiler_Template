@@ -106,3 +106,4 @@ def test_container_when_output_created_should_contain_valid_json(mock_env: utils
     output_file_path = utils.gen_env_paths(mock_env.base_path)["OUT"]
     output = utils.fetch_compilation_output(output_file_path)
     assert isinstance(output.success, bool), "Output JSON file does not contain valid 'success' field"
+
